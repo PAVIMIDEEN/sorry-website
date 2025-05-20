@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I'm Sorry, Shyam 💚</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e0f7e9, #a8edea);
+      color: #2d2d2d;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* Floating green hearts */
+    .heart-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .heart {
+      width: 20px;
+      height: 20px;
+      background: #00c853;
+      position: absolute;
+      transform: rotate(45deg);
+      animation: float 12s infinite ease-in;
+      opacity: 0.3;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background: #00c853;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after  { top: 0; left: -10px; }
+
+    @keyframes float {
+      0%   { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(45deg); opacity: 0; }
+    }
+
+    header {
+      padding: 3rem 1rem;
+      animation: fadeInDown 2s ease;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #00c853;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+      color: #444;
+      animation: fadeIn 3s ease;
+    }
+
+    .photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 0 15px rgba(0,200,83,0.5);
+      margin: 1.5rem auto;
+      animation: pulse 2s infinite;
+    }
+
+    .timeline {
+      background: #f1fff4;
+      padding: 2rem;
+      border-radius: 20px;
+      max-width: 800px;
+      margin: 2rem auto;
+      box-shadow: 0 0 20px rgba(0,200,83,0.1);
+      animation: fadeInUp 2s ease;
+    }
+
+    .timeline h2 {
+      color: #00c853;
+      margin-bottom: 1rem;
+    }
+
+    .timeline ul {
+      list-style: none;
+      padding: 0;
+      line-height: 2;
+      font-size: 1rem;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem auto;
+      max-width: 1000px;
+      animation: fadeInUp 3s ease;
+    }
+
+    .gallery img {
+      width: 180px;
+      height: 180px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(0,200,83,0.3);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.08) rotate(-2deg);
+      box-shadow: 0 0 30px rgba(0,200,83,0.6);
+    }
+
+    .gallery img::after {
+      content: "💚";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 1.5rem;
+      animation: pulseHeart 2s infinite;
+    }
+
+    .memory {
+      background: #ffffff;
+      margin: 1rem auto;
+      padding: 1rem 1.5rem;
+      border-left: 6px solid #00c853;
+      border-radius: 10px;
+      max-width: 700px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0, 200, 83, 0.1);
+      animation: slideIn 1s ease forwards;
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+
+    .memory:nth-child(odd) {
+      animation-delay: 0.5s;
+    }
+
+    .memory:nth-child(even) {
+      animation-delay: 1s;
+    }
+
+    .memory span {
+      font-size: 1.5rem;
+      color: #00c853;
+      margin-right: 0.5rem;
+    }
+
+    .forgive {
+      margin: 3rem auto;
+      animation: fadeIn 3s ease;
+    }
+
+    .forgive button {
+      background: #00c853;
+      color: white;
+      padding: 1rem 2.5rem;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,200,83,0.4);
+      transition: transform 0.2s ease;
+      animation: pulse 1.5s infinite;
+    }
+
+    .forgive button:hover {
+      transform: scale(1.1);
+      background: #009624;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    @keyframes pulseHeart {
+      0%, 100% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart-bg"></div>
+
+  <header>
+    <h1>I'm Sorry, Shyam 💚</h1>
+    <img src="WhatsApp Image 2025-05-20 at 2.15.51 PM.jpeg" alt="Our Photo" class="photo">
+    <p>I miss you every second. You are the most precious part of my life. I made mistakes, and I regret them deeply. Please forgive me, Shyam. I love you more than words can express. 💚</p>
+  </header>
+
+  <section class="timeline">
+    <h2>🌿 Our Journey Together</h2>
+    <div class="memory">
+      <span>💚</span><p><strong>4/3/22</strong> – Our First Chat 🗨️</p>
+    </div>
+    <div class="memory">
+      <span>💚</span><p><strong>17/3/23</strong> – Our First Long Conversation 🎧</p>
+    </div>
+    <div class="memory">
+      <span>💚</span><p><strong>6/9/24</strong> – Our First Magical Meeting 👀</p>
+    </div>
+    <div class="memory">
+      <span>💚</span><p><strong>7/11/24</strong> – You Proposed to Me 💍</p>
+    </div>
+    <div class="memory">
+      <span>💚</span><p><strong>9/11/24</strong> – I Said "Yes" ❤️</p>
+    </div>
+    <div class="memory">
+      <span>💚</span><p><strong>10/5/25</strong> – Our Most Precious Day 🌅</p>
+      <ul>
+        <li>🛵 First Bike Ride</li>
+        <li>🌞 Sunrise at Kanyakumari</li>
+        <li>🎬 First Movie Date</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <img src="IMG-20241010-WA0016.jpg" alt="Memory 1" />
+    <img src="IMG-20250308-WA0009.jpg" alt="Memory 2" />
+    <img src="IMG-20250511-WA0003.jpg" alt="Memory 3" />
+    <img src="WhatsApp Image 2025-05-11 at 7.34.23 PM.jpeg" alt="Memory 4" />
+  </section>
+
+  <section class="forgive">
+    <button onclick="forgive()">💚 Please Forgive Me</button>
+  </section>
+
+  <audio autoplay loop>
+    <source src="love-music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    document.querySelector('.forgive button').addEventListener('click', function () {
+      alert("Shyam, I’m truly sorry. Please come back. I love you endlessly. 💚");
+    });
+
+    const heartBg = document.querySelector('.heart-bg');
+    for (let i = 0; i < 60; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = Math.random() * 100 + 'vh';
+      heart.style.animationDuration = 5 + Math.random() * 5 + 's';
+      heartBg.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
+
